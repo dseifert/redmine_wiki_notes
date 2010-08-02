@@ -1,0 +1,27 @@
+= Redmine Wiki Notes Plugin
+
+== Plugin installation
+
+1. Copy the plugin directory into the vendor/plugins directory
+2. Restart Redmine
+
+== Usage
+
+The following macros are added:
+
+* {{note(text)}}
+* {{tip(text)}}
+* {{important(text)}}
+* {{warning(text)}}
+
+This displays a block in the wiki page with a corresponding
+icon and the specified text.
+
+== Credits
+
+The icons and the stylesheet were taken from the DokuWiki Note-Plugin ((c) Olivier
+Cortès and others, http://www.dokuwiki.org/plugin:note (GPLv2)).
+
+== License
+
+This plugin is released under the GPLv2.
