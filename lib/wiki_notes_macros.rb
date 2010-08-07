@@ -8,28 +8,28 @@ module WikiNotesMacro
 
     macro :note do |obj, args|
       o = '<div class="noteclassic">'
-      o << args[0]
+      o << args.join(",")
       o << '</div>'
       o
     end
 
     macro :tip do |obj, args|
       o = '<div class="notetip">'
-      o << args[0]
+      o << args.join(",")
       o << '</div>'
       o
     end
 
     macro :important do |obj, args|
       o = '<div class="noteimportant">'
-      o << args[0]
+      o << args.join(",")
       o << '</div>'
       o
     end
 
     macro :warning do |obj, args|
       o = '<div class="notewarning">'
-      o << args[0]
+      o << args.join(",")
       o << '</div>'
       o
     end
