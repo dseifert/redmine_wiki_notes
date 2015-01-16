@@ -1,37 +1,45 @@
 module WikiNotesMacro
   Redmine::WikiFormatting::Macros.register do
     desc "Adds a note to the wiki page:\n\n" +
-      " @!{{note(text)}}@\n" +
-      " @!{{tip(text)}}@\n" +
-      " @!{{important(text)}}@\n"
-      " @!{{warning(text)}}@\n"
-
-    macro :note, :parse_args => false do |obj, args|
-      o = '<div class="noteclassic">'
-      o << textilizable(args)
-      o << '</div>'
-      o.html_safe
+      "<pre>\n" +
+      "{{note(text with *wiki formatting*)}}\n" +
+      "{{note\nAlternately, you can put blocks of *wiki-formatted* text here.\n}}\n" +
+      "{{note(Or if you really want)\nYou can do both...\n}}\n" +
+      "</pre>"
+    macro :note, :parse_args => false do |obj, args, text|
+      o = textilizable(args)
+      if text.present?
+        o << textilizable(text, :object => obj, :headings => false)
+      end
+      content_tag('div', o.html_safe, :class => "noteclassic")
     end
 
-    macro :tip, :parse_args => false do |obj, args|
-      o = '<div class="notetip">'
-      o << textilizable(args)
-      o << '</div>'
-      o.html_safe
+    desc "Variant of @note@."
+    macro :tip, :parse_args => false do |obj, args, text|
+      o = textilizable(args)
+      if text.present?
+        o << textilizable(text, :object => obj, :headings => false)
+      end
+      content_tag('div', o.html_safe, :class => "notetip")
     end
 
-    macro :important, :parse_args => false do |obj, args|
-      o = '<div class="noteimportant">'
-      o << textilizable(args)
-      o << '</div>'
-      o.html_safe
+    desc "Variant of @note@."
+    macro :important, :parse_args => false do |obj, args, text|
+      o = textilizable(args)
+      if text.present?
+        o << textilizable(text, :object => obj, :headings => false)
+      end
+      content_tag('div', o.html_safe, :class => "noteimportant")
     end
 
-    macro :warning, :parse_args => false do |obj, args|
-      o = '<div class="notewarning">'
-      o << textilizable(args)
-      o << '</div>'
-      o.html_safe
+    desc "Variant of @note@."
+    macro :warning, :parse_args => false do |obj, args, text|
+      o = textilizable(args)
+      if text.present?
+        o << textilizable(text, :object => obj, :headings => false)
+      end
+      content_tag('div', o.html_safe, :class => "notewarning")
     end
   end
+
 end
