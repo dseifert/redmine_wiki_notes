@@ -9,10 +9,22 @@
 
 The following macros are added:
 
-* {{note(text)}}
-* {{tip(text)}}
-* {{important(text)}}
-* {{warning(text)}}
+* note
+* tip
+* important
+* warning
+
+which can be used in one of three ways:
+
+   {{note(text with *wiki formatting*)}}
+
+   {{note
+   Alternately, you can put blocks of *wiki-formatted* text here.
+   }}
+
+   {{note(Or if you really want)
+   You can do both...
+   }}
 
 This displays a block in the wiki page with a corresponding
 icon and the specified text.
@@ -21,6 +33,8 @@ icon and the specified text.
 
 The icons and the stylesheet were taken from the DokuWiki Note-Plugin ((c) Olivier
 Cortès and others, http://www.dokuwiki.org/plugin:note (GPLv2)).
+
+For the contributors, please see the git commit log.
 
 == License
 
